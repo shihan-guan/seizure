@@ -533,7 +533,6 @@ def main():
     st.sidebar.header("Pick Model")
     model_opt = st.sidebar.selectbox("Model Type", ["model1", "EEGTransformerCNN"], key="model_opt_select")
     if model_opt == "model1":
-        st.write("Current working directory:", os.getcwd())
         f_eegcnn = st.sidebar.file_uploader("model1.pth", type=["pth", "pt"], key="eegcnn_file")
         if f_eegcnn:
             st.session_state.model = EEGCNN(num_classes=2)
@@ -545,7 +544,7 @@ def main():
                 st.sidebar.error(f"Load error: {e}")
         else:
             # Attempt to load default model if no file uploaded
-            default_model_path = os.path.join(os.getcwd(), "best_model_EEGCNN_fold1.pth")
+            default_model_path = os.path.join(os.getcwd(), "/mount/src/seizure/seizure_detection_app/best_model_EEGCNN_fold1.pth")
             if os.path.exists(default_model_path):
                 st.session_state.model = EEGCNN(num_classes=2)
                 try:
