@@ -533,7 +533,7 @@ def main():
     st.sidebar.header("Pick Model")
     model_opt = st.sidebar.selectbox("Model Type", ["model1", "EEGTransformerCNN"], key="model_opt_select")
     if model_opt == "model1":
-        #st.sidebar.write("Using EEGCNN – must match training shape.")
+        st.write("Current working directory:", os.getcwd())
         f_eegcnn = st.sidebar.file_uploader("model1.pth", type=["pth", "pt"], key="eegcnn_file")
         if f_eegcnn:
             st.session_state.model = EEGCNN(num_classes=2)
